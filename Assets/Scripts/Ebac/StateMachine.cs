@@ -3,48 +3,46 @@ using System.Collections.Generic;
 using UnityEngine;
 using NaughtyAttributes;
 
-public class StateMachine : MonoBehaviour {
+public class Test {
 
-    public enum States {
-        NONE,
+    public enum Test2 {
+        NONE
     }
 
-    public Dictionary<States, StateBase> dictionaryState;
+    public void Aa() {
+        StateMachine<Test2> stateMachine = new StateMachine<Test2>();
+
+        stateMachine.RegisterStates(Test.Test2.NONE, new StateBase());
+    }
+
+}
+
+public class StateMachine<T> where T : System.Enum {
+
+
+    public Dictionary<T, StateBase> dictionaryState;
 
     private StateBase _currentState;
     public float timeToStartGame = 1f;
 
-    private void Awake() {
-        dictionaryState = new Dictionary<States, StateBase>();
-        dictionaryState.Add(States.NONE, new StateBase());
-
-        SwitchState(States.NONE);
+    public StateBase CurrentState {
+        get { return _currentState; }
     }
 
-    private void Update() {
-
+    public void Init() {
+        dictionaryState = new Dictionary<T, StateBase>();
     }
 
-    [Button]
-    private void StartGame() {
-        SwitchState(States.NONE);
+    public void RegisterStates(T typeEnum, StateBase state) {
+        dictionaryState.Add(typeEnum, state);
     }
 
-#if UNITY_EDITOR
-    #region DEBUG
-
-    [Button]
-    private void ChangeStateToStateX() {
-        SwitchState(States.NONE);
+    public void Update() {
+        if(_currentState != null) {
+            _currentState.OnStateStay();
+        }
     }
-
-    [Button]
-    private void ChangeStateToStateY() {
-        SwitchState(States.NONE);
-    }
-    #endregion
-#endif
-    public void SwitchState(States state) {
+    public void SwitchState(T state) {
         if(_currentState != null) _currentState.OnStateExit();
 
         _currentState = dictionaryState[state];
