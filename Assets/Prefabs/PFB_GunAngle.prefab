@@ -18,7 +18,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6651821484706029937
 Transform:
   m_ObjectHideFlags: 0
@@ -99,6 +99,7 @@ MonoBehaviour:
   positionToShoot: {fileID: 6651821485036794548}
   timeBetweenShots: 0.3
   speed: 50
+  uIGunUpdaters: []
   maxShots: 5
   timeToReload: 1
   amountPerShot: 4
