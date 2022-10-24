@@ -7,7 +7,11 @@ using Animation;
 
 namespace Enemy {
     public class EnemyBase : MonoBehaviour, IDamageable {
+
+        private Player _player;
+
         public float starLife = 10f;
+        public bool lookAtPlayer = false;
         public Collider collider;
         public FlashColor flashColor;
         public ParticleSystem particleSystem;
@@ -25,10 +29,13 @@ namespace Enemy {
         void Awake() {
             Init();
         }
+        void Start() {
+            _player = GameObject.FindObjectOfType<Player>();
+        }
 
-        void Update() {
-            if(Input.GetKeyDown(KeyCode.T)) {
-                OnDamage(5f);
+        public virtual void Update() {
+            if(lookAtPlayer) {
+                transform.LookAt(_player.transform.position);
             }
         }
         public void Damage(float damage) {
@@ -37,6 +44,13 @@ namespace Enemy {
         public void Damage(float damage, Vector3 dir) {
             OnDamage(damage);
             transform.DOMove(transform.position - dir, .1f);
+        }
+        void OnCollisionEnter(Collision other) {
+            Player p = other.transform.GetComponent<Player>();
+
+            if(p != null) {
+                p.Damage(1);
+            }
         }
 
         protected void ResetLife() {
