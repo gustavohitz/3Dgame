@@ -34,8 +34,14 @@ namespace Boss {
 
         void Awake() {
             Init();
+            OnValidate();
             healthBase.OnKill += OnBossKill;
         }
+        void OnValidate() {
+        if(healthBase == null) {
+            healthBase = GetComponent<HealthBase>();
+        }
+    }
 
         private void Init() {
             stateMachine = new StateMachine<BossAction>();

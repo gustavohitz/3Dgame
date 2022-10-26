@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour, IDamageable {
+public class Player : MonoBehaviour {//, IDamageable
     public Animator animator;
     public CharacterController characterController;
     public float speed = 1f;
@@ -18,6 +18,21 @@ public class Player : MonoBehaviour, IDamageable {
     
     [Header("Flash")]
     public List<FlashColor> flashColors;
+
+    public HealthBase healthBase;
+
+    private Renderer[] renderers;
+    public Renderer[] Renderers {
+        get {
+            return renderers;
+        }
+    }
+
+    void Awake() {
+        renderers = transform.GetComponentsInChildren<Renderer>();
+        OnValidate();
+        healthBase.OnDamage += Damage;
+    }
 
     void Update() {
         transform.Rotate(0, Input.GetAxis("Horizontal") * rotationSpeed * Time.deltaTime, 0);
@@ -52,12 +67,18 @@ public class Player : MonoBehaviour, IDamageable {
         animator.SetBool("Run", isWalking);
     }
 
+    void OnValidate() {
+        if(healthBase == null) {
+            healthBase = GetComponent<HealthBase>();
+        }
+    }
+
     #region LIFE
-    public void Damage(float damage) {
+    public void Damage(HealthBase h) {
         flashColors.ForEach(i => i.Flash());
     }
     public void Damage(float damage, Vector3 dir) {
-        Damage(damage);
+        //Damage(damage);
     }
     #endregion
   

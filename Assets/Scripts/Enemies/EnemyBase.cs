@@ -35,7 +35,11 @@ namespace Enemy {
 
         public virtual void Update() {
             if(lookAtPlayer) {
-                transform.LookAt(_player.transform.position);
+                //transform.LookAt(_player.transform.position);
+                var minMax = GetMinMaxFromBounds(_player.Renderers);
+
+                transform.LookAt(new Vector3(_player.transform.position.x, (minMax.maxY + minMax.minY)/2, _player.transform.position.z));
+
             }
         }
         public void Damage(float damage) {
@@ -49,7 +53,7 @@ namespace Enemy {
             Player p = other.transform.GetComponent<Player>();
 
             if(p != null) {
-                p.Damage(1);
+                p.healthBase.Damage(1);
             }
         }
 
@@ -101,6 +105,30 @@ namespace Enemy {
             _animationBase.PlayAnimationByTrigger(animationType);
         }
 
+        #endregion
+        
+        #region GETTING PLAYER BOUNDS
+        public (float minY, float maxY) GetMinMaxFromBounds(Renderer[] renderers) {
+        Bounds[] bounds = new Bounds[renderers.Length];
+
+        for(int i = 0; i < renderers.Length; i++) {
+            bounds[i] = renderers[i].bounds;
+        }
+
+        (float minY, float maxY) minMax = (Mathf.Infinity, Mathf.NegativeInfinity);
+
+        for(int i = 0; i < bounds.Length; i++) {
+            if(bounds[i].min.y < minMax.minY) {
+                minMax.minY = bounds[i].min.y;
+            }
+
+            if(bounds[i].max.y > minMax.maxY) {
+                minMax.maxY = bounds[i].max.y;
+            }
+        }
+
+        return minMax;
+        }
         #endregion
 
     
