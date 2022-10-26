@@ -10,7 +10,7 @@ namespace Enemy {
 
         private Player _player;
 
-        public float starLife = 10f;
+        public float startLife = 10f;
         public bool lookAtPlayer = false;
         public Collider collider;
         public FlashColor flashColor;
@@ -54,7 +54,7 @@ namespace Enemy {
         }
 
         protected void ResetLife() {
-            _currentLife = starLife;
+            _currentLife = startLife;
         }
 
         protected virtual void Init() {
