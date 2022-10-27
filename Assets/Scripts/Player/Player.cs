@@ -21,7 +21,9 @@ public class Player : MonoBehaviour {//, IDamageable
     [Header("Flash")]
     public List<FlashColor> flashColors;
 
+    [Header("Life")]
     public HealthBase healthBase;
+    public UIFillUpdater uiGunUpdater;
 
     private Renderer[] renderers;
     public Renderer[] Renderers {
