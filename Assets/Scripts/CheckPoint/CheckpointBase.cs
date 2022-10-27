@@ -6,6 +6,7 @@ public class CheckpointBase : MonoBehaviour {
 
     public MeshRenderer meshRenderer;
     public int key = 01;
+    public UIMessageBase messageBase;
 
     private string checkpointKey = "CheckpointKey";
     private bool checkpointActivated = false;
@@ -13,6 +14,7 @@ public class CheckpointBase : MonoBehaviour {
     void OnTriggerEnter(Collider other) {
         if(!checkpointActivated && other.transform.tag == "Player") {
             VerifyCheckpoint();
+            messageBase.ShowMessage();
         }
     }
 
@@ -30,11 +32,13 @@ public class CheckpointBase : MonoBehaviour {
         meshRenderer.material.SetColor("_EmissionColor", Color.gray);
     }
     void SaveCheckpoint() {
-        if(PlayerPrefs.GetInt(checkpointKey, 0) > key) {
-            PlayerPrefs.SetInt(checkpointKey, key);
+        //if(PlayerPrefs.GetInt(checkpointKey, 0) > key) {
+            //PlayerPrefs.SetInt(checkpointKey, key);
 
             checkpointActivated = true;
-        }
+
+            CheckpointManager.Instance.SaveCheckPoint(key);
+        //}
     }
 }
 
