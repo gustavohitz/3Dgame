@@ -88,6 +88,7 @@ public class Player : MonoBehaviour {//, IDamageable
     #region LIFE
     public void Damage(HealthBase h) {
         flashColors.ForEach(i => i.Flash());
+        EffectsManager.Instance.ChangeVignette();
     }
     public void Damage(float damage, Vector3 dir) {
         //Damage(damage);
