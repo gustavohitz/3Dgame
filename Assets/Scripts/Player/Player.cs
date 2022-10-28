@@ -105,8 +105,12 @@ public class Player : MonoBehaviour {//, IDamageable
         _alive = true;
         healthBase.ResetLife();
         animator.SetTrigger("Revive");
-        colliders.ForEach(i => i.enabled = true);
         Respawn();
+        Invoke(nameof(TurnOnColliders), .1f);
+        
+    }
+    private void TurnOnColliders() {
+        colliders.ForEach(i => i.enabled = true);
     }
     #endregion
   
