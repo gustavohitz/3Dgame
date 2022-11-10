@@ -29,9 +29,10 @@ namespace Items {
             if(amount < 0) return;
             itemSetups.Find(i => i.itemType == itemType).soInt.value += amount;
         }
-        public void RemoveByType(ItemType itemType, int amount = -1) {
-            if(amount > 0) return;
-
+        public ItemSetup GetItemByType(ItemType itemType) {
+            return itemSetups.Find(i => i.itemType == itemType);
+        }
+        public void RemoveByType(ItemType itemType, int amount = 1) {
             var item = itemSetups.Find(i => i.itemType == itemType);
             item.soInt.value -= amount;
 

@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Ebac.Core.Singleton;
 
-public class Player : MonoBehaviour {//, IDamageable
+public class Player : Singleton<Player> {//, IDamageable
     public List<Collider> colliders;
     public Animator animator;
     public CharacterController characterController;
@@ -32,7 +33,8 @@ public class Player : MonoBehaviour {//, IDamageable
         }
     }
 
-    void Awake() {
+    protected override void Awake() {
+        base.Awake();
         renderers = transform.GetComponentsInChildren<Renderer>();
         OnValidate();
         healthBase.OnDamage += Damage;
