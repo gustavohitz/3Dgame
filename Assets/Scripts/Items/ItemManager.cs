@@ -57,5 +57,6 @@ namespace Items {
     public class ItemSetup {
         public ItemType itemType;
         public SOInt soInt;
+        public Sprite icon;
     }
 }
