@@ -4,8 +4,12 @@ using UnityEngine;
 using DG.Tweening;
 
 public class ChestBase : MonoBehaviour {
+    public KeyCode keyCode = KeyCode.E;
     public Animator animator;
     public string triggerOpen = "Open";
+
+    [Space]
+    public ChestItemBase chestItem;
 
     [Header("Notification")]
     public GameObject notification;
@@ -13,14 +17,33 @@ public class ChestBase : MonoBehaviour {
     public Ease tweenEase = Ease.OutBack;
     private float _startScale;
 
+    private bool _chestOpen = false;
+
     void Start() {
         _startScale = notification.transform.localScale.x;
         HideNotification();
     }
+    void Update() {
+        if(Input.GetKeyDown(keyCode) && notification.activeSelf) {
+            OpenChest();
+        }
+    }
 
     [NaughtyAttributes.Button]
     private void OpenChest() {
+        if(_chestOpen) return;
+
         animator.SetTrigger(triggerOpen);
+        _chestOpen = true;
+        HideNotification();
+        Invoke(nameof(ShowItem), 1f);
+    }
+    private void ShowItem() {
+        chestItem.ShowItem();
+        Invoke(nameof(CollectItem), 1f);
+    }
+    private void CollectItem() {
+        chestItem.Collect();
     }
     void OnTriggerEnter(Collider other) {
         Player p = other.transform.GetComponent<Player>();
