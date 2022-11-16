@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Ebac.Core.Singleton;
+using Outfit;
 
 public class Player : Singleton<Player> {//, IDamageable
     public List<Collider> colliders;
@@ -25,6 +26,9 @@ public class Player : Singleton<Player> {//, IDamageable
     [Header("Life")]
     public HealthBase healthBase;
     public UIFillUpdater uiGunUpdater;
+
+    [Space]
+    [SerializeField] private OutfitChanger _outfitChanger;
 
     private Renderer[] renderers;
     public Renderer[] Renderers {
@@ -126,6 +130,14 @@ public class Player : Singleton<Player> {//, IDamageable
         speed = localSpeed;
         yield return new WaitForSeconds(duration);
         speed = defaultSpeed;
+    }
+    public void ChangeTexture(OutfitSetup setup, float duration) {
+        StartCoroutine(ChangeTextureCoroutine(setup, duration));
+    }
+    IEnumerator ChangeTextureCoroutine(OutfitSetup setup, float duration) {
+        _outfitChanger.ChangeTexture(setup);
+        yield return new WaitForSeconds(duration);
+        _outfitChanger.ResetTexture();
     }
   
 }

@@ -1159,7 +1159,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 3ce1614f41a05464d992c9f7d462f5e5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1528,8 +1528,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 187846462}
-  - component: {fileID: 187846461}
   - component: {fileID: 187846460}
+  - component: {fileID: 187846461}
   m_Layer: 0
   m_Name: OutfitItemSpeed
   m_TagString: Untagged
@@ -1559,11 +1559,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 187846459}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5fe0af25c95b42d3bd01ca3a9a19a45, type: 3}
+  m_Script: {fileID: 11500000, guid: 54ec2098377334d1d80a758da7926667, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   outfitType: 0
   compareTag: Player
+  duration: 2
+  targetSpeed: 50
 --- !u!4 &187846462
 Transform:
   m_ObjectHideFlags: 0
@@ -1572,8 +1574,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 187846459}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 418.55, y: -5.98, z: 16.78}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 422.5, y: -5.98, z: 16.78}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 142221133}
   m_Father: {fileID: 0}
@@ -8516,6 +8518,7 @@ MonoBehaviour:
   - {fileID: 1966762631}
   healthBase: {fileID: 1249997251}
   uiGunUpdater: {fileID: 397349273}
+  _outfitChanger: {fileID: 1994985529}
 --- !u!4 &1249997249
 Transform:
   m_ObjectHideFlags: 0
@@ -9820,7 +9823,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1438216329}
-  m_LocalRotation: {x: 0.000000005250998, y: 0.95229554, z: -0.30517742, w: 0.000000016385558}
+  m_LocalRotation: {x: -0.0000000052509987, y: 0.95229554, z: -0.30517742, w: -0.000000016385561}
   m_LocalPosition: {x: 48.111145, y: 40.363426, z: 13.35}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -13365,10 +13368,7 @@ MonoBehaviour:
   m_AnimatedTarget: {fileID: 704675398}
   m_LayerIndex: 0
   m_ShowDebugText: 0
-  m_ChildCameras:
-  - {fileID: 1162025342}
-  - {fileID: 1736710967}
-  - {fileID: 1438216330}
+  m_ChildCameras: []
   m_Instructions:
   - m_FullHash: 1432961145
     m_VirtualCamera: {fileID: 1736710967}
