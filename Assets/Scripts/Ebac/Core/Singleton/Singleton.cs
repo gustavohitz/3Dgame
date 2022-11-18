@@ -8,7 +8,7 @@ namespace Ebac.Core.Singleton
     public class Singleton<T> : MonoBehaviour where T : MonoBehaviour {
         public static T Instance;
 
-        protected virtual void Awake() {
+        private void Awake() {
             if(Instance == null) {
                 Instance = GetComponent<T>();
             }
