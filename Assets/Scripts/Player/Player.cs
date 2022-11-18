@@ -37,8 +37,8 @@ public class Player : Singleton<Player> {//, IDamageable
         }
     }
 
-    /*protected override*/ void Awake() {
-        //base.Awake();
+    protected override void Awake() {
+        base.Awake();
         renderers = transform.GetComponentsInChildren<Renderer>();
         OnValidate();
         healthBase.OnDamage += Damage;

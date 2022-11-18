@@ -2,24 +2,45 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+using Ebac.Core.Singleton;
 
-public class SaveManager : MonoBehaviour {
+public class SaveManager : Singleton<SaveManager> {
+    private SaveSetup _saveSetup;
+    
+    protected override void Awake() {
+        base.Awake();
+        _saveSetup = new SaveSetup();
+        _saveSetup.lastLevel = 2;
+        _saveSetup.playerName = "Rafael";
+    }
 
+    #region SAVE
     [NaughtyAttributes.Button]
     private void Save() {
-        SaveSetup setup = new SaveSetup();
-        setup.lastLevel = 2;
-        setup.playerName = "Rafael";
-
-        string setupToJson = JsonUtility.ToJson(setup, true);
+        string setupToJson = JsonUtility.ToJson(_saveSetup, true);
         Debug.Log(setupToJson);
         SaveFile(setupToJson);
     }
+    public void SaveLastLevel(int level) {
+        _saveSetup.lastLevel = level;
+        Save();
+    }
+    #endregion
     private void SaveFile(string json) {
         string path = Application.streamingAssetsPath + "/save.txt";
 
         Debug.Log(path);
         File.WriteAllText(path, json);
+    }
+
+    [NaughtyAttributes.Button]
+    private void SaveLevelOne() {
+        SaveLastLevel(1);
+    }
+
+    [NaughtyAttributes.Button]
+    private void SaveLevelFive() {
+        SaveLastLevel(5);
     }
 }
 
