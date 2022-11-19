@@ -17,6 +17,11 @@ namespace Items {
 
         void Start() {
             Reset();
+            LoadItemsFromSave();
+        }
+        private void LoadItemsFromSave() {
+            AddByType(ItemType.COIN, (int) SaveManager.Instance.Setup.coins);
+            AddByType(ItemType.LIFE_PACK, (int) SaveManager.Instance.Setup.lifePacks);
         }
 
         private void Reset() {

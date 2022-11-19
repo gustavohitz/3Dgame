@@ -1710,6 +1710,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1088621890 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7906418606469118696, guid: 3a9f6e3845cd04c71af8c1a7cfcf59bf, type: 3}
+  m_PrefabInstance: {fileID: 6456657496821495957}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1149129668
 GameObject:
   m_ObjectHideFlags: 0
@@ -2327,6 +2338,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8504c4249bda74c798b281fcab3d0ac8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1502199606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1502199601}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b9450a3afe3d40af9227f59b35b30f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uiTextName: {fileID: 1088621890}
 --- !u!1 &1502289508
 GameObject:
   m_ObjectHideFlags: 0
@@ -4029,6 +4053,22 @@ PrefabInstance:
     - target: {fileID: 3167372655261889130, guid: d81387b87d3974e25ac156b1d2cec195, type: 3}
       propertyPath: m_Name
       value: PFB_SaveManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 3167372655261889131, guid: d81387b87d3974e25ac156b1d2cec195, type: 3}
+      propertyPath: _saveSetup.coins
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3167372655261889131, guid: d81387b87d3974e25ac156b1d2cec195, type: 3}
+      propertyPath: _saveSetup.lastLevel
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3167372655261889131, guid: d81387b87d3974e25ac156b1d2cec195, type: 3}
+      propertyPath: _saveSetup.lifePacks
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3167372655261889131, guid: d81387b87d3974e25ac156b1d2cec195, type: 3}
+      propertyPath: _saveSetup.playerName
+      value: Rafael
       objectReference: {fileID: 0}
     - target: {fileID: 3167372655261889132, guid: d81387b87d3974e25ac156b1d2cec195, type: 3}
       propertyPath: m_RootOrder
