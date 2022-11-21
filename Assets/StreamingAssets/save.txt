@@ -1,6 +1,6 @@
 {
     "lastLevel": 1,
-    "coins": 3.0,
-    "lifePacks": 3.0,
+    "coins": 6.0,
+    "lifePacks": 6.0,
     "playerName": "Rafael"
 }

@@ -10,7 +10,7 @@ public class PlayLevel : MonoBehaviour {
         SaveManager.Instance.LoadedFile += OnLoad;
     }
     public void OnLoad(SaveSetup setup) {
-        uiTextName.text = "Play " + (setup.lastLevel + 1);
+        uiTextName.text = "Load" /*+ (setup.lastLevel + 1)*/;
     }
     private void OnDestroy() {
         SaveManager.Instance.LoadedFile -= OnLoad;
